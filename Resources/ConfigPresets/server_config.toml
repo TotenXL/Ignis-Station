@@ -22,15 +22,15 @@ max_connections = 256
 
 [game]
 # Name of the server. This is what will be displayed in the server list and lobby.
-hostname = "MyServer"
+hostname = "Ignis LRP"
 # Description of the server. This is what will be displayed in the server list.
-desc = "Just another server, don't mind me!"
+desc = "We love fat bitches"
 # The maximum number of players that can connect to the server. (Exluding admins)
-soft_max_players = 30
+soft_max_players = 80
 # Controls the lobby timer in seconds.
 lobbyduration = 150
 # Should roles be restricted based on time?
-role_timers = true
+role_timers = false
 # Check connecting player ip against the IPIntel API (aka stop VPN/Proxy connections). Useful for hosts.
 # Read more here https://getipintel.net/
 ipintel_enabled = false
@@ -56,6 +56,7 @@ admins_count_in_playercount = false
 [server]
 # Change this to have the changelog and rules "last seen" date stored separately from other servers.
 id = "unknown_server_id"
+rules_file = "StandardRuleset"
 
 [events]
 # Controls if the game should run station events. (Meteors, Sleeper Syndicates, etc.)
