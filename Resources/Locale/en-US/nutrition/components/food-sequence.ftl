@@ -2,6 +2,7 @@ food-sequence-no-space = You can't put any more!
 
 # GENERAL
 
+food-sequence-content-hairball = hair
 food-sequence-content-chicken = chicken
 food-sequence-content-duck = duck
 food-sequence-content-crab = crab

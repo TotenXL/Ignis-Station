@@ -1,0 +1,96 @@
+- type: marking
+  id: FelinidFluffyTailRings
+  bodyPart: Tail
+  groupWhitelist: [ Felinid ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: Felinid_fluffy_tail_full
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: felinid_fluffy_tail_rings
+
+- type: marking
+  id: FelinidFluffyTail
+  bodyPart: Tail
+  groupWhitelist: [ Felinid ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: Felinid_fluffy_tail_full
+
+- type: marking
+  id: FelinidAlternativeTail
+  bodyPart: Tail
+  groupWhitelist: [ Felinid ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/alternative_tail.rsi
+    state: m_waggingtail_cat_FRONT
+
+- type: marking
+  id: FelinidTiger
+  bodyPart: Tail
+  groupWhitelist: [ Felinid ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/tiger_tail.rsi
+    state: m_tail_tiger_primary
+  - sprite: _DV/Mobs/Customization/Felinid/tiger_tail.rsi
+    state: m_tail_tiger_secondary
+  - sprite: _DV/Mobs/Customization/Felinid/tiger_tail.rsi
+    state: m_tail_tiger_tertiary
+
+# Kitsune ears/tails, shared between Felinid and Vulpkanin
+- type: marking
+  id: KitsuneEarsFox
+  bodyPart: HeadTop
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_ears.rsi
+    state: foxears
+
+- type: marking
+  id: KitsuneEarsDefault
+  bodyPart: HeadTop
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_ears.rsi
+    state: kitsune_fluffy_ears
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_ears.rsi
+    state: kitsune_fluffy_fluff
+
+- type: marking
+  id: KitsuneTailDefault
+  bodyPart: Tail
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: kitsune_primary
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: kitsune_secondary
+
+- type: marking
+  id: KitsuneTailsNine
+  bodyPart: Tail
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxninetailstone1
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxninetailstone2
+
+- type: marking
+  id: KitsuneTailsThree
+  bodyPart: Tail
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxthreetailstone1
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxthreetailstone2
+
+- type: marking
+  id: KitsuneTailsTwo
+  bodyPart: Tail
+  groupWhitelist: [ Felinid, Vulpkanin ]
+  sprites:
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxtwotailstone1
+  - sprite: _DV/Mobs/Customization/Felinid/felinid_tails.rsi
+    state: foxtwotailstone2

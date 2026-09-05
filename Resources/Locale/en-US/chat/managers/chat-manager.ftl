@@ -176,6 +176,12 @@ chat-speech-verb-vulpkanin-3 = rurs
 chat-speech-verb-vulpkanin-4 = yaps
 chat-speech-verb-vulpkanin = Vulpkanin
 
+chat-speech-verb-name-felinid = Felinid
+chat-speech-verb-felinid-1 = mraows
+chat-speech-verb-felinid-2 = mews
+chat-speech-verb-felinid-3 = meows
+chat-speech-verb-felinid-4 = purrs out
+
 chat-speech-verb-name-wawa = Wawa
 chat-speech-verb-wawa-1 = intones
 chat-speech-verb-wawa-2 = states

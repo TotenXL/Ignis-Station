@@ -32,6 +32,9 @@
   - Wizard
 
 - type: npcFaction
+  id: Felinid
+
+- type: npcFaction
   id: Passive
 
 - type: npcFaction

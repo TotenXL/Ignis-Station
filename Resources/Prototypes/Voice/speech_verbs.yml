@@ -190,6 +190,15 @@
   - chat-speech-verb-vulpkanin-4
 
 - type: speechVerb
+  id: Felinid
+  name: chat-speech-verb-name-felinid
+  speechVerbStrings:
+  - chat-speech-verb-felinid-1
+  - chat-speech-verb-felinid-2
+  - chat-speech-verb-felinid-3
+  - chat-speech-verb-felinid-4
+
+- type: speechVerb
   id: Wawa
   name: chat-speech-verb-name-wawa
   speechVerbStrings:

@@ -1,0 +1,143 @@
+{
+    "version": 1,
+    "copyright": "felinidfluffytails made by Adrian16199, kitsune_primary and kitsune_secondary Taken from S.P.L.U.R.T at commit https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/commit/96703f76bccd8fe6a96b78524efb97a9af661767, foxninetails, foxthreetails, foxtwotails, and fluffytail by @Kilath",
+    "license": "CC-BY-SA-4.0",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "felinid_fluffy_tail_rings",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "Felinid_fluffy_tail_full",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "kitsune_primary",
+            "directions": 4
+        },
+        {
+            "name": "kitsune_secondary",
+            "directions": 4
+        },
+        {
+            "name": "foxninetailstone1",
+            "directions": 4
+        },
+        {
+            "name": "foxninetailstone2",
+            "directions": 4
+        },
+        {
+            "name": "foxthreetailstone1",
+            "directions": 4
+        },
+        {
+            "name": "foxthreetailstone2",
+            "directions": 4
+        },
+        {
+            "name": "foxtwotailstone1",
+            "directions": 4
+        },
+        {
+            "name": "foxtwotailstone2",
+            "directions": 4
+        }
+    ]
+}

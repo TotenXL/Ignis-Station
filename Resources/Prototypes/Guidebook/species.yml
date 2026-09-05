@@ -6,6 +6,7 @@
   - Arachnid
   - Diona
   - Dwarf
+  - Felinid
   - Human
   - Moth
   - Reptilian
@@ -27,6 +28,11 @@
   id: Dwarf
   name: species-name-dwarf
   text: "/ServerInfo/Guidebook/Mobs/Dwarf.xml"
+
+- type: guideEntry
+  id: Felinid
+  name: species-name-felinid
+  text: "/ServerInfo/Guidebook/Mobs/Felinid.xml"
 
 - type: guideEntry
   id: Human

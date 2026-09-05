@@ -1,0 +1,26 @@
+<Document>
+  # Felinids
+
+  <Box>
+    <GuideEntityEmbed Entity="AppearanceFelinid" Caption=""/>
+  </Box>
+
+  Small and mischievous cat-eared people. Being small has plenty of upsides and downsides.
+
+  ## Diet
+
+  - Can eat raw meat, and will happily eat mice and rats whole.
+
+  ## Benefits
+
+  - They are smaller than Humans, making them harder to hit.
+  - Have the ability to cough up a hairball to purge some of the chemicals from their bloodstream.
+  - Eating a whole mouse or rat feeds them and refreshes the hairball ability.
+  - Use their claws to deal Slashing and Piercing damage.
+
+  ## Drawbacks
+
+  - Take 15% more Blunt, Slash and Piercing damage.
+  - Slow down more sharply as they take damage.
+
+</Document>

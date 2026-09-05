@@ -2052,6 +2052,7 @@
       Dead:
         Base: splat-0
   - type: Edible
+  - type: FelinidFood # Nyanotrasen - Felinid: eating a whole mouse enables the hairball action
   - type: FlavorProfile
     flavors:
     - meaty

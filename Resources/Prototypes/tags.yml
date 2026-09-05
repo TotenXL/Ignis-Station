@@ -687,6 +687,9 @@
 ## H ##
 
 - type: Tag
+  id: Hairball # Felinid hairball, digestible only by felinids
+
+- type: Tag
   id: Hamster # storage whitelist: MechHamtr
 
 - type: Tag
