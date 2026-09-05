@@ -21,6 +21,7 @@
   id: Meow
   name: chat-emote-name-meow
   category: Vocal
+  icon: { sprite: /Textures/_RMC14/Actions/species_emotes.rsi, state: meow }
   available: false
   whitelist:
     components:
@@ -45,6 +46,7 @@
   id: Mew
   name: chat-emote-name-mew
   category: Vocal
+  icon: { sprite: /Textures/_RMC14/Actions/species_emotes.rsi, state: mew }
   available: false
   whitelist:
     components:
@@ -63,6 +65,7 @@
   id: Purr
   name: chat-emote-name-purr
   category: Vocal
+  icon: { sprite: /Textures/_RMC14/Actions/species_emotes.rsi, state: purr }
   available: false
   whitelist:
     components:

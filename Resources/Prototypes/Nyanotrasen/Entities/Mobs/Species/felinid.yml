@@ -24,7 +24,7 @@
       limit: 4
       required: false
     enum.HumanoidVisualLayers.Snout:
-      limit: 0
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 2

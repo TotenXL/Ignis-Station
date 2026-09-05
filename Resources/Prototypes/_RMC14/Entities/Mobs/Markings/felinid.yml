@@ -77,3 +77,71 @@
   sprites:
   - sprite: _RMC14/Mobs/Felinids/double_tail.rsi
     state: m_waggingtail_twocat
+
+- type: marking
+  id: FelinidTailBasicAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  sprites:
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_tip_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_even_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_odd_wag
+
+- type: marking
+  id: FelinidTailBasicWithBowAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  sprites:
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_tip_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_even_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_odd_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_bow_wag
+
+- type: marking
+  id: FelinidTailBasicWithBellAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  sprites:
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_tip_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_even_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_odd_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_bell_wag
+
+- type: marking
+  id: FelinidTailBasicWithBowAndBellAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  sprites:
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_tip_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_even_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_tail_stripes_odd_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_bow_wag
+  - sprite: _RMC14/Mobs/Felinids/felinid_tails.rsi
+    state: basic_bell_wag
+
+# Snout
+
+- type: marking
+  id: FelinidCatSnout
+  bodyPart: Snout
+  groupWhitelist: [ Felinid ]
+  sprites:
+  - sprite: _RMC14/Mobs/Felinids/felinid_snouts.rsi
+    state: snout_cat
+  - sprite: _RMC14/Mobs/Felinids/felinid_snouts.rsi
+    state: snout_cat_nose
