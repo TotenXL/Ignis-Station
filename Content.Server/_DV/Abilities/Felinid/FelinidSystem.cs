@@ -2,8 +2,10 @@ using Content.Shared._DV.Abilities;
 using Content.Shared._DV.Abilities.Felinid;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Item;
 using Content.Shared.Medical;
+using Content.Shared.Popups;
 using Content.Shared.StatusEffect;
 using Content.Shared.Throwing;
 using Robust.Shared.Random;
@@ -23,6 +25,7 @@ public sealed partial class FelinidSystem : SharedFelinidSystem
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private BloodstreamSystem _bloodstream = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private VomitSystem _vomit = default!;
 
     public override void Initialize()
@@ -51,6 +54,10 @@ public sealed partial class FelinidSystem : SharedFelinidSystem
 
     private void OnHairballHit(Entity<HairballComponent> ent, ref ThrowDoHitEvent args)
     {
+        // Always give feedback that the throw connected; the vomit itself is still a chance roll.
+        _popup.PopupEntity(
+            Loc.GetString("hairball-hit", ("target", Identity.Entity(args.Target, EntityManager))),
+            args.Target);
         TryVomit(ent, args.Target);
     }
 

@@ -176,7 +176,7 @@
   abstract: true
   components:
   - type: Metabolizer
-    metabolizerTypes: [ Human ]
+    metabolizerTypes: [ Animal ] # Nyanotrasen - Felinid: carnivore diet (matches vulpkanin/reptilian) so raw meat and mice don't cause vomiting
 
 - type: entity
   parent: OrganFelinid

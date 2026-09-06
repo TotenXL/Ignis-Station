@@ -88,7 +88,11 @@ public sealed partial class ItemCougherSystem : EntitySystem
     /// </summary>
     public void EnableAction(Entity<ItemCougherComponent?> ent)
     {
-        SetActionEnabled(ent, true);
+        if (!_query.Resolve(ent, ref ent.Comp) || ent.Comp.ActionEntity is not {} action)
+            return;
+
+        _actions.SetEnabled(action, true);
+        _actions.RemoveCooldown(action); // eating a mouse makes the hairball instantly usable, not on a 30s wait
     }
 
     public void SetActionEnabled(Entity<ItemCougherComponent?> ent, bool enabled)

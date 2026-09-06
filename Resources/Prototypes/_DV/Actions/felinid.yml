@@ -6,8 +6,11 @@
   components:
   - type: Action
     useDelay: 30
+    enabled: false # enabled by SharedFelinidSystem after eating a mouse
   - type: Sprite
     sprite: Nyanotrasen/Objects/Specific/Species/felinid.rsi
-    state: icon
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CoughItemActionEvent
