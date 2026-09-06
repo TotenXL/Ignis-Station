@@ -69,6 +69,9 @@ public abstract partial class SharedGunSystem
         DebugTools.Assert((component.AvailableModes & fire) != 0x0);
         component.SelectedMode = fire;
 
+        // IS change: let per-fire-mode modifiers (ISScatter) recompute when the mode changes.
+        RefreshModifiers((uid, component));
+
         if (!Paused(uid))
         {
             var curTime = Timing.CurTime;

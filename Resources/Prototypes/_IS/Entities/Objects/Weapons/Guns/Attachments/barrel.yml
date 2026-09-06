@@ -1,0 +1,128 @@
+# Barrel attachments. Stat values adapted from RMC-14's barrel_attachments.yml; RMC's accuracy and
+# damage-falloff fields have no equivalent here, so their effect is folded into scatter instead.
+
+- type: entity
+  parent: ISBarrelAttachmentBase
+  id: ISAttachmentExtendedBarrel
+  name: extended barrel
+  description: A longer barrel that squeezes more velocity and accuracy out of each round.
+  components:
+  - type: Sprite
+    state: ebarrel
+  - type: Attachable
+    examineText: is-attachable-examine-extended-barrel
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+    state: ebarrel_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -1.5
+      projectileSpeedFlat: 5
+    - conditions: Unwielded
+      scatterFlat: 1.0
+      projectileSpeedFlat: 5
+
+- type: entity
+  parent: ISBarrelAttachmentBase
+  id: ISAttachmentExtendedCompensator
+  name: extended vented compensator
+  description: An extended barrel with gas ports cut into it. Steadier, though the vented gas costs it a little punch.
+  components:
+  - type: Sprite
+    state: ebarrel_vented
+  - type: Attachable
+    examineText: is-attachable-examine-extended-compensator
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+    state: ebarrel_vented_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -2.0
+      recoilFlat: -0.4
+      projectileSpeedFlat: 5
+    - conditions: Unwielded
+      scatterFlat: 1.0
+      projectileSpeedFlat: 5
+
+- type: entity
+  parent: ISBarrelAttachmentBase
+  id: ISAttachmentBarrelCharger
+  name: barrel charger
+  description: An electromagnetic charger wrapped around the barrel. Rounds hit harder, but the weapon cycles slower.
+  components:
+  - type: Sprite
+    state: hbarrel
+  - type: Attachable
+    examineText: is-attachable-examine-barrel-charger
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+    state: hbarrel_a
+  - type: AttachableGunMods
+    modifiers:
+    - fireDelayFlat: 0.25
+      projectileSpeedFlat: 15
+      scatterFlat: 1.0
+
+- type: entity
+  parent: ISBarrelAttachmentBase
+  id: ISAttachmentSuppressor
+  name: suppressor
+  description: A screw-on baffle stack. Muffles the report and hides the muzzle flash.
+  components:
+  - type: Sprite
+    state: suppressor
+  - type: Attachable
+    examineText: is-attachable-examine-suppressor
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+    state: suppressor_a
+  - type: AttachableSilencer
+    hideMuzzleFlash: true
+    sound:
+      collection: ISSilencedShoot
+  - type: AttachableGunMods
+    modifiers:
+    - scatterFlat: 0.5
+      projectileSpeedFlat: -5
+
+- type: entity
+  parent: [ISAttachableBase, BaseKnife]
+  id: ISAttachmentM5Bayonet
+  name: M5 bayonet
+  description: A standard-issue combat knife that can be fixed under a rifle barrel.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Melee/m5_bayonet.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - ISAttachmentBarrel
+    - Knife
+  - type: Attachable
+    examineText: is-attachable-examine-bayonet
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+    state: bayonet_a
+  # Gives the host gun a bite and a prybar. Only added if the gun doesn't already have them.
+  - type: AttachableGrants
+    components:
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 12
+      attackRate: 0.8
+      range: 1.5
+      animation: WeaponArcThrust
+    - type: Prying
+      speedModifier: 0.5
+      pryPowered: false
+      force: false
+    - type: Tool
+      qualities:
+      - Prying
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Unwielded
+      scatterFlat: 1.0

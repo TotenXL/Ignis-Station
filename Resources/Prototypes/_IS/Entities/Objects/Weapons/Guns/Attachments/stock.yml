@@ -1,0 +1,77 @@
+# Stock attachments. Only the desert camo variant of the RSI was ported, since this fork has no
+# ItemCamouflage equivalent.
+
+- type: entity
+  parent: ISStockAttachmentBase
+  id: ISAttachmentM54CStockSolid
+  name: M54C solid stock
+  description: A fixed polymer stock. Heavy, but it soaks up recoil beautifully.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/m54_stocks/desert.rsi
+    state: m54c-solid
+  - type: Attachable
+    examineText: is-attachable-examine-stock-solid
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/m54_stocks/desert.rsi
+    state: m54c-solid_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -2.5
+      recoilFlat: -0.5
+      angleIncreaseFlat: -1.5
+    - conditions: Unwielded
+      scatterFlat: 4.0
+  - type: AttachableMeleeMods
+    modifiers:
+    - bonusDamage:
+        types:
+          Blunt: 5
+
+- type: entity
+  parent: [ISStockAttachmentBase, ISAttachableToggleableBase]
+  id: ISAttachmentM54CStockCollapsible
+  name: M54C collapsible stock
+  description: A folding stock. Extend it for control, collapse it to keep the weapon compact.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/m54_stocks/desert.rsi
+    state: m54c-col
+  - type: Item
+    size: Small
+  - type: Attachable
+    examineText: is-attachable-examine-stock-collapsible
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/m54_stocks/desert.rsi
+    state: m54c-col_a
+    showActive: true
+  - type: AttachableToggleable
+    actionName: Extend collapsible stock
+    actionDesc: Extend or collapse the stock.
+    doAfter: 0.5
+    activatePopup: is-attachable-popup-extend
+    deactivatePopup: is-attachable-popup-collapse
+    activateSound:
+      path: /Audio/_IS/Attachable/attachment_activate.ogg
+    deactivateSound:
+      path: /Audio/_IS/Attachable/attachment_deactivate.ogg
+  # Only helps once it is actually extended.
+  - type: AttachableGunMods
+    modifiers:
+    - conditions:
+      - Active
+      - Wielded
+      scatterFlat: -1.5
+      recoilFlat: -0.3
+      angleIncreaseFlat: -1.0
+    - conditions:
+      - Active
+      - Unwielded
+      scatterFlat: 2.0
+  - type: AttachableMeleeMods
+    modifiers:
+    - conditions: Active
+      bonusDamage:
+        types:
+          Blunt: 3

@@ -1,0 +1,11 @@
+- type: entity
+  parent: BaseAction
+  id: ActionToggleAttachable
+  name: Toggle attachment
+  description: Switch this weapon attachment on or off.
+  components:
+  - type: Action
+    itemIconStyle: BigItem
+    useDelay: 0.5
+  - type: InstantAction
+    event: !type:AttachableToggleActionEvent

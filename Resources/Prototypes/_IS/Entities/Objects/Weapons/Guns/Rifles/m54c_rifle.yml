@@ -1,0 +1,387 @@
+# Ported from RMC-14: Resources/Prototypes/_RMC14/Entities/Objects/Weapons/Guns/Rifles/m54c_rifle.yml
+# RMC-14 runs a bespoke gun stack (RMCSelectiveFire, AttachableHolder, ItemCamouflage,
+# CMArmorPiercing, RefillableByBulletBox, chamber-less mag feed, ...). This re-expresses the
+# M54C with vanilla SS14 components, keeping its identity: standard-issue full-auto marine
+# rifle, selective fire, 10x24mm caseless ammo, 40-round mags (+ AP / Incendiary / Extended).
+# Sprites & audio copied from RMC-14 under _IS/ (see the matching .rsi meta.json for credits).
+
+- type: entity
+  name: M54C assault rifle
+  parent: [BaseWeaponRifle, BaseSecurityContraband]
+  id: WeaponRifleM54C
+  description: The standard issue rifle of the Marines, commonly carried by most combat personnel. Uses 10x24mm caseless ammunition.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Rifles/m54c/desert.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _IS/Objects/Weapons/Guns/Rifles/m54c/desert.rsi
+  # ISScatter owns the wielded/unwielded split, so zero out the one inherited from
+  # BaseGunWieldable (-20/-30) rather than have two systems fight over MinAngle/MaxAngle.
+  - type: GunWieldBonus
+    minAngle: 0
+    maxAngle: 0
+    angleIncrease: 0
+    angleDecay: 0
+  # RMC-style scatter: flat cone on semi-auto, climbing on burst and full auto, and
+  # much worse when fired from the hip. Values carried over from RMC's M54C.
+  - type: ISScatter
+    scatterWielded: 6
+    scatterUnwielded: 20
+    recoilUnwielded: 4
+    baseFireRate: 4
+    burstScatterMult: 1
+  - type: Gun
+    shotsPerBurst: 3
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+      - Burst
+      - SemiAuto
+    # minAngle/maxAngle/angleIncrease/angleDecay/fireRate/cameraRecoilScalar are all
+    # computed by ISScatter at refresh time; setting them here would have no effect.
+    soundGunshot:
+      path: /Audio/_IS/Weapons/Guns/Gunshots/gun_m54c_1.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: null
+        insertSound: /Audio/_IS/Weapons/Guns/Reload/m41_reload.ogg
+        ejectSound: /Audio/_IS/Weapons/Guns/Reload/m41_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifleM54C
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifleM54C
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: AttachableHolder
+    slots:
+      is-aslot-barrel:
+        name: is-attachable-slot-barrel
+        whitelist:
+          tags:
+          - ISAttachmentBarrel
+      is-aslot-rail:
+        name: is-attachable-slot-rail
+        whitelist:
+          tags:
+          - ISAttachmentRail
+      is-aslot-stock:
+        name: is-attachable-slot-stock
+        startingAttachable: ISAttachmentM54CStockCollapsible
+        whitelist:
+          tags:
+          - ISAttachmentStock
+      is-aslot-underbarrel:
+        name: is-attachable-slot-underbarrel
+        whitelist:
+          tags:
+          - ISAttachmentUnderbarrel
+  # Offsets carried over from RMC's M54C; tweak if an attachment sits visibly off the rail.
+  - type: AttachableHolderVisuals
+    offsets:
+      is-aslot-barrel: 0.8425, 0.001
+      is-aslot-rail: 0.1, 0.16
+      is-aslot-stock: -0.78, 0.0325
+      is-aslot-underbarrel: 0.349, -0.375
+
+- type: entity
+  parent: WeaponRifleM54C
+  id: WeaponRifleM54CFilled
+  suffix: Filled
+  components:
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineRifleM54C
+        insertSound: /Audio/_IS/Weapons/Guns/Reload/m41_reload.ogg
+        ejectSound: /Audio/_IS/Weapons/Guns/Reload/m41_unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineRifleM54C
+        whitelistFailPopup: gun-magazine-whitelist-fail
+
+# --- Magazines ---------------------------------------------------------------
+
+- type: entity
+  abstract: true
+  parent: [BaseItem, BaseSecurityContraband]
+  id: BaseMagazineRifleM54C
+  name: "M54C magazine (10x24mm)"
+  components:
+  - type: Tag
+    tags:
+      - MagazineRifleM54C
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    capacity: 40
+    whitelist:
+      tags:
+        - CartridgeRifleM54C
+    proto: CartridgeRifleM54C
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Ammunition/Magazines/m54c.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Appearance
+
+- type: entity
+  parent: BaseMagazineRifleM54C
+  id: MagazineRifleM54C
+  name: "M54C magazine (10x24mm)"
+  description: A 40-round magazine of 10x24mm caseless ammunition for the M54C assault rifle.
+
+- type: entity
+  parent: MagazineRifleM54C
+  id: MagazineRifleM54CEmpty
+  suffix: empty
+  components:
+  - type: BallisticAmmoProvider
+    proto: null
+
+- type: entity
+  parent: BaseMagazineRifleM54C
+  id: MagazineRifleM54CAP
+  name: "M54C AP magazine (10x24mm)"
+  suffix: AP
+  description: A 40-round magazine of armor-piercing 10x24mm caseless ammunition for the M54C assault rifle.
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    capacity: 40
+    whitelist:
+      tags:
+        - CartridgeRifleM54CAP
+    proto: CartridgeRifleM54CAP
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Ammunition/Magazines/m54c.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: ammo_band
+      color: "#1F951F"
+
+- type: entity
+  parent: BaseMagazineRifleM54C
+  id: MagazineRifleM54CIncendiary
+  name: "M54C incendiary magazine (10x24mm)"
+  suffix: Incendiary
+  description: A 40-round magazine of self-igniting incendiary 10x24mm caseless ammunition for the M54C assault rifle.
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    capacity: 40
+    whitelist:
+      tags:
+        - CartridgeRifleM54CIncendiary
+    proto: CartridgeRifleM54CIncendiary
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Ammunition/Magazines/m54c.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: ammo_band
+      color: "#771A10"
+
+- type: entity
+  parent: BaseMagazineRifleM54C
+  id: MagazineRifleM54CExtended
+  name: "M54C extended magazine (10x24mm)"
+  suffix: Extended
+  description: An extended 60-round magazine of 10x24mm caseless ammunition for the M54C assault rifle.
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    capacity: 60
+    whitelist:
+      tags:
+        - CartridgeRifleM54C
+    proto: CartridgeRifleM54C
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Ammunition/Magazines/m54ce.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 2
+    zeroVisible: false
+
+# --- Cartridges (caseless: no casing left behind) ---------------------------
+
+- type: entity
+  abstract: true
+  parent: [BaseCartridge, BaseSecurityContraband]
+  id: BaseCartridgeRifleM54C
+  name: cartridge (10x24mm)
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRifleM54C
+  - type: CartridgeAmmo
+    proto: BulletRifleM54C
+    deleteOnSpawn: true
+    muzzleFlash: MuzzleFlashEffectM54C
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+
+- type: entity
+  parent: BaseCartridgeRifleM54C
+  id: CartridgeRifleM54C
+  name: cartridge (10x24mm)
+  description: A 10x24mm caseless cartridge. Fits in M54C magazines.
+
+- type: entity
+  parent: BaseCartridgeRifleM54C
+  id: CartridgeRifleM54CAP
+  name: AP cartridge (10x24mm)
+  description: An armor-piercing 10x24mm caseless cartridge. Fits in M54C AP magazines.
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRifleM54C
+      - CartridgeRifleM54CAP
+  - type: CartridgeAmmo
+    proto: BulletRifleM54CAP
+    deleteOnSpawn: true
+    muzzleFlash: MuzzleFlashEffectM54C
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+    - state: tip
+      map: ["enum.AmmoVisualLayers.Tip"]
+      color: "#1F951F"
+
+- type: entity
+  parent: BaseCartridgeRifleM54C
+  id: CartridgeRifleM54CIncendiary
+  name: incendiary cartridge (10x24mm)
+  description: A self-igniting incendiary 10x24mm caseless cartridge. Fits in M54C incendiary magazines.
+  components:
+  - type: Tag
+    tags:
+      - CartridgeRifleM54C
+      - CartridgeRifleM54CIncendiary
+  - type: CartridgeAmmo
+    proto: BulletRifleM54CIncendiary
+    deleteOnSpawn: true
+    muzzleFlash: MuzzleFlashEffectM54C
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+    - state: tip
+      map: ["enum.AmmoVisualLayers.Tip"]
+      color: "#771A10"
+
+# --- Muzzle flash ---------------------------------------------------------
+# Vanilla places the flash a fixed ~0.5 tile in front of the shooter regardless of
+# barrel length; the RMC m54c sprite's barrel reaches further, so nudge the effect
+# forward/up to sit at the muzzle. Tune the offset to taste.
+
+- type: entity
+  parent: MuzzleFlashEffect
+  id: MuzzleFlashEffectM54C
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: BelowMobs
+    offset: 0.31, 0
+    layers:
+    - shader: unshaded
+      map: [ "enum.EffectLayers.Unshaded" ]
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_bullet
+
+# --- Bullets ---------------------------------------------------------------
+
+- type: entity
+  parent: BulletRifle
+  id: BulletRifleM54C
+  categories: [ HideSpawnMenu ]
+  name: bullet (10x24mm)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 20
+
+- type: entity
+  parent: BaseBulletAP
+  id: BulletRifleM54CAP
+  categories: [ HideSpawnMenu ]
+  name: bullet (10x24mm AP)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 16
+
+- type: entity
+  parent: BaseBulletIncendiary
+  id: BulletRifleM54CIncendiary
+  categories: [ HideSpawnMenu ]
+  name: bullet (10x24mm incendiary)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 15
+        Heat: 5
+
+# --- Tags ---------------------------------------------------------------
+
+- type: Tag
+  id: MagazineRifleM54C
+
+- type: Tag
+  id: CartridgeRifleM54C
+
+- type: Tag
+  id: CartridgeRifleM54CAP
+
+- type: Tag
+  id: CartridgeRifleM54CIncendiary

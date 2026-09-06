@@ -1,0 +1,164 @@
+# Underbarrel attachments. RMC's underbarrel weapons (U1 grenade launcher, U7 shotgun,
+# mini flamethrower, extinguisher) are out of scope - each is a whole second gun.
+
+- type: entity
+  parent: ISUnderAttachmentBase
+  id: ISAttachmentAngledGrip
+  name: angled grip
+  description: A canted foregrip. Gets the weapon up and on target faster, at the cost of bulk.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/rmc_under.rsi
+    state: angledgrip
+  - type: Attachable
+    examineText: is-attachable-examine-angled-grip
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rmc_under.rsi
+    state: angledgrip_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -0.5
+      angleDecayFlat: 15
+
+- type: entity
+  parent: ISUnderAttachmentBase
+  id: ISAttachmentVerticalGrip
+  name: vertical grip
+  description: A straight foregrip. Steadies the weapon considerably when shouldered, and gets in the way otherwise.
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/rmc_under.rsi
+    state: verticalgrip
+  - type: Attachable
+    examineText: is-attachable-examine-vertical-grip
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rmc_under.rsi
+    state: verticalgrip_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -2.0
+      recoilFlat: -0.3
+      angleIncreaseFlat: -1.0
+    - conditions: Unwielded
+      scatterFlat: 3.0
+
+- type: entity
+  parent: ISUnderAttachmentBase
+  id: ISAttachmentLaserSight
+  name: laser sight
+  description: A targeting laser. Helps most when the weapon is fired one-handed.
+  components:
+  - type: Sprite
+    state: lasersight
+  - type: Attachable
+    examineText: is-attachable-examine-laser-sight
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/under.rsi
+    state: lasersight_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -0.5
+    - conditions: Unwielded
+      scatterFlat: -4.0
+
+- type: entity
+  parent: ISUnderAttachmentBase
+  id: ISAttachmentGyroscopicStabilizer
+  name: gyroscopic stabilizer
+  description: A spinning mass that fights muzzle climb. Makes hip fire far more controllable, at the cost of rate of fire.
+  components:
+  - type: Sprite
+    state: gyro
+  - type: Attachable
+    examineText: is-attachable-examine-gyro-stabilizer
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/under.rsi
+    state: gyro_a
+  - type: AttachableGunMods
+    modifiers:
+    - fireDelayFlat: 0.25
+    - conditions: Unwielded
+      scatterFlat: -8.0
+      recoilFlat: -1.5
+      angleIncreaseFlat: -3.0
+
+- type: entity
+  parent: [ISUnderAttachmentBase, ISAttachableToggleableBase]
+  id: ISAttachmentFlashlightGrip
+  name: flashlight grip
+  description: A foregrip with a light built into it.
+  components:
+  - type: Sprite
+    state: flashgrip
+  - type: Attachable
+    examineText: is-attachable-examine-flashlight-grip
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/under.rsi
+    state: flashgrip_a
+    showActive: true
+  - type: AttachableToggleable
+    actionName: Toggle flashlight grip
+    actionDesc: Switch the grip light on or off.
+    activatePopup: is-attachable-popup-activate
+    deactivatePopup: is-attachable-popup-deactivate
+    activateSound:
+      path: /Audio/_IS/Attachable/attachment_activate.ogg
+    deactivateSound:
+      path: /Audio/_IS/Attachable/attachment_deactivate.ogg
+  - type: ItemToggle
+    onUse: false
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 5
+    energy: 2
+    softness: 0.5
+    netsync: false
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -0.5
+
+- type: entity
+  parent: [ISUnderAttachmentBase, ISAttachableToggleableBase]
+  id: ISAttachmentBipod
+  name: bipod
+  description: A folding two-legged rest. Deploy it and the weapon becomes dramatically steadier, until you move.
+  components:
+  - type: Sprite
+    state: bipod
+  - type: Item
+    size: Normal
+  - type: Attachable
+    examineText: is-attachable-examine-bipod
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/under.rsi
+    state: bipod_a
+    showActive: true
+  - type: AttachableToggleable
+    actionName: Deploy bipod
+    actionDesc: Brace the weapon on its bipod. Moving folds it back up.
+    doAfter: 1.5
+    wieldedOnly: true
+    breakOnMove: true
+    activatePopup: is-attachable-popup-deploy
+    deactivatePopup: is-attachable-popup-undeploy
+    activateSound:
+      path: /Audio/_IS/Attachable/bipod_toggle.ogg
+    deactivateSound:
+      path: /Audio/_IS/Attachable/bipod_toggle.ogg
+  - type: AttachableGunMods
+    modifiers:
+    # Stowed, it is just weight hanging off the front.
+    - conditions: Inactive
+      scatterFlat: 1.0
+    # Braced, it is the single biggest accuracy gain available.
+    - conditions: Active
+      scatterFlat: -5.0
+      recoilFlat: -1.0
+      angleIncreaseFlat: -4.0
+      angleDecayFlat: 30
+      fireDelayFlat: -0.05

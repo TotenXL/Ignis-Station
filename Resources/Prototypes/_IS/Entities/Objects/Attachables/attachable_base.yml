@@ -1,0 +1,79 @@
+# Base prototypes for weapon attachments. Ported thin from RMC-14's rmc_attachable_base.yml.
+
+- type: entity
+  abstract: true
+  parent: [BaseItem, BaseSecurityContraband]
+  id: ISAttachableBase
+  components:
+  - type: Item
+    size: Small
+  - type: Attachable
+  - type: Appearance
+
+- type: entity
+  abstract: true
+  parent: ISAttachableBase
+  id: ISAttachableToggleableBase
+  components:
+  - type: AttachableToggleable
+
+# --- Per-slot bases -----------------------------------------------------------
+# These only exist to keep the sprite path and tag in one place per category.
+
+- type: entity
+  abstract: true
+  parent: ISAttachableBase
+  id: ISBarrelAttachmentBase
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/barrel.rsi
+  - type: Tag
+    tags:
+    - ISAttachmentBarrel
+
+- type: entity
+  abstract: true
+  parent: ISAttachableBase
+  id: ISRailAttachmentBase
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+  - type: Tag
+    tags:
+    - ISAttachmentRail
+
+- type: entity
+  abstract: true
+  parent: ISAttachableBase
+  id: ISStockAttachmentBase
+  components:
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - ISAttachmentStock
+
+- type: entity
+  abstract: true
+  parent: ISAttachableBase
+  id: ISUnderAttachmentBase
+  components:
+  - type: Sprite
+    sprite: _IS/Objects/Weapons/Guns/Attachments/under.rsi
+  - type: Tag
+    tags:
+    - ISAttachmentUnderbarrel
+
+# --- Tags ---------------------------------------------------------------------
+
+- type: Tag
+  id: ISAttachmentBarrel
+
+- type: Tag
+  id: ISAttachmentRail
+
+- type: Tag
+  id: ISAttachmentStock
+
+- type: Tag
+  id: ISAttachmentUnderbarrel

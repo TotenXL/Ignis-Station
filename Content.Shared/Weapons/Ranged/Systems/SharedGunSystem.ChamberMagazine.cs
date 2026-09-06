@@ -15,6 +15,10 @@ public abstract partial class SharedGunSystem
     protected virtual void InitializeChamberMagazine()
     {
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, ComponentStartup>(OnChamberStartup);
+        // IS change: mirrors the MagazineAmmoProvider MapInit hook. Without it MagLoaded is only
+        // ever written when the slot changes, so a gun that spawns with an empty magazine slot
+        // draws its loaded sprite (the client reads a missing MagLoaded key as "loaded").
+        SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, MapInitEvent>(OnChamberMapInit);
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, TakeAmmoEvent>(OnChamberMagazineTakeAmmo);
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, GetAmmoCountEvent>(OnChamberAmmoCount);
 
@@ -33,6 +37,12 @@ public abstract partial class SharedGunSystem
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, EntInsertedIntoContainerMessage>(OnMagazineSlotChange);
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, EntRemovedFromContainerMessage>(OnMagazineSlotChange);
         SubscribeLocalEvent<ChamberMagazineAmmoProviderComponent, ExaminedEvent>(OnChamberMagazineExamine);
+    }
+
+    // IS change
+    private void OnChamberMapInit(Entity<ChamberMagazineAmmoProviderComponent> ent, ref MapInitEvent args)
+    {
+        MagazineSlotChanged((ent.Owner, ent.Comp));
     }
 
     private void OnChamberStartup(EntityUid uid, ChamberMagazineAmmoProviderComponent component, ComponentStartup args)

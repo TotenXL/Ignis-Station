@@ -1,0 +1,149 @@
+# Rail attachments. Scopes use the Estoc's cursor-offset behaviour rather than a real zoom, since
+# this fork has no scope system.
+
+- type: entity
+  parent: ISRailAttachmentBase
+  id: ISAttachmentS5RedDotSight
+  name: S5 red dot sight
+  description: A simple illuminated dot. Steadies aim when the weapon is shouldered.
+  components:
+  - type: Sprite
+    state: reddot
+  - type: Attachable
+    examineText: is-attachable-examine-red-dot
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: reddot_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -1.5
+    - conditions: Unwielded
+      scatterFlat: -0.5
+
+- type: entity
+  parent: ISRailAttachmentBase
+  id: ISAttachmentS6ReflexSight
+  name: S6 reflex sight
+  description: A wide-window reflex sight. Keeps bursts from wandering.
+  components:
+  - type: Sprite
+    state: reflex
+  - type: Attachable
+    examineText: is-attachable-examine-reflex
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: reflex_a
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -1.0
+      angleIncreaseFlat: -0.8
+    - conditions: Unwielded
+      scatterFlat: -0.5
+
+- type: entity
+  parent: ISRailAttachmentBase
+  id: ISAttachmentMagneticHarness
+  name: magnetic harness
+  description: A magnetic clamp that lets the weapon sling itself. Adds a little dead weight up top.
+  components:
+  - type: Sprite
+    state: magnetic
+  - type: Attachable
+    examineText: is-attachable-examine-magnetic-harness
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: magnetic_a
+  - type: AttachableGunMods
+    modifiers:
+    - scatterFlat: 0.5
+
+- type: entity
+  parent: ISRailAttachmentBase
+  id: ISAttachmentS8TelescopicScope
+  name: S8 4x telescopic scope
+  description: A magnified optic. Lets you see further down your line of fire, but it's unwieldy up close.
+  components:
+  - type: Sprite
+    state: sniperscope
+  - type: Attachable
+    examineText: is-attachable-examine-scope
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: sniperscope_a
+  # No zoom system in this fork, so lean on the camera pan the Estoc and XL8 already use.
+  - type: AttachableGrants
+    components:
+    - type: CursorOffsetInHand
+    - type: CursorOffsetRequiresWield
+    - type: EyeCursorOffset
+      maxOffset: 3
+      pvsIncrease: 0.3
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -2.0
+      fireDelayFlat: 0.1
+    - conditions: Unwielded
+      scatterFlat: 4.0
+
+- type: entity
+  parent: ISRailAttachmentBase
+  id: ISAttachmentS4TelescopicMiniscope
+  name: S4 2x telescopic miniscope
+  description: A compact optic. A little extra reach without weighing the weapon down.
+  components:
+  - type: Sprite
+    state: miniscope
+  - type: Attachable
+    examineText: is-attachable-examine-miniscope
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: miniscope_a
+  - type: AttachableGrants
+    components:
+    - type: CursorOffsetInHand
+    - type: CursorOffsetRequiresWield
+    - type: EyeCursorOffset
+      maxOffset: 1.75
+      pvsIncrease: 0.2
+  - type: AttachableGunMods
+    modifiers:
+    - conditions: Wielded
+      scatterFlat: -1.0
+    - conditions: Unwielded
+      scatterFlat: 1.0
+
+- type: entity
+  parent: [ISRailAttachmentBase, ISAttachableToggleableBase]
+  id: ISAttachmentRailFlashlight
+  name: rail flashlight
+  description: A weapon light clamped to the top rail.
+  components:
+  - type: Sprite
+    state: flashlight
+  - type: Attachable
+    examineText: is-attachable-examine-rail-flashlight
+  - type: AttachableVisuals
+    rsi: _IS/Objects/Weapons/Guns/Attachments/rail.rsi
+    state: flashlight_a
+    showActive: true
+  - type: AttachableToggleable
+    actionName: Toggle rail flashlight
+    actionDesc: Switch the weapon light on or off.
+    activatePopup: is-attachable-popup-activate
+    deactivatePopup: is-attachable-popup-deactivate
+    activateSound:
+      path: /Audio/_IS/Attachable/attachment_activate.ogg
+    deactivateSound:
+      path: /Audio/_IS/Attachable/attachment_deactivate.ogg
+  - type: ItemToggle
+    onUse: false
+  - type: ItemTogglePointLight
+  - type: PointLight
+    enabled: false
+    radius: 6
+    energy: 2.5
+    softness: 0.5
+    netsync: false
