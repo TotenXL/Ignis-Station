@@ -84,7 +84,7 @@
     graph: LightFixture
     node: tubeLight
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/light-tube.rsi
+    sprite: _Funkystation/Structures/Wallmounts/Lighting/light_tube.rsi # Funky
     layers:
     - map: ["enum.PoweredLightLayers.Base"]
       state: base
@@ -109,7 +109,7 @@
   description: "A light fixture. Draws power and produces light when equipped with a light tube."
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/Lighting/light-tube.rsi
+    sprite: _Funkystation/Structures/Wallmounts/Lighting/light_tube.rsi # Funky
     offset: 0, 1
     state: empty
   - type: PointLight
