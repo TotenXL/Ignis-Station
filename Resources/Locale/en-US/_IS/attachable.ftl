@@ -43,3 +43,13 @@ is-attachable-examine-flashlight-grip = A foregrip with a light built into it.
 is-attachable-examine-bipod = Deploys to brace the weapon. Dramatically steadier, until you move.
 is-attachable-examine-stock-solid = A fixed stock. Heavy, but it soaks up recoil.
 is-attachable-examine-stock-collapsible = A folding stock. Extend it for control, collapse it to keep the weapon compact.
+
+# Toggle action names
+is-attachable-action-rail-flashlight-name = Toggle rail flashlight
+is-attachable-action-rail-flashlight-desc = Switch the weapon light on or off.
+is-attachable-action-stock-collapsible-name = Extend collapsible stock
+is-attachable-action-stock-collapsible-desc = Extend or collapse the stock.
+is-attachable-action-flashlight-grip-name = Toggle flashlight grip
+is-attachable-action-flashlight-grip-desc = Switch the grip light on or off.
+is-attachable-action-bipod-name = Deploy bipod
+is-attachable-action-bipod-desc = Brace the weapon on its bipod. Moving folds it back up.

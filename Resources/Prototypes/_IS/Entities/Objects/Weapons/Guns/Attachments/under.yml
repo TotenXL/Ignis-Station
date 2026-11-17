@@ -100,8 +100,8 @@
     state: flashgrip_a
     showActive: true
   - type: AttachableToggleable
-    actionName: Toggle flashlight grip
-    actionDesc: Switch the grip light on or off.
+    actionName: is-attachable-action-flashlight-grip-name
+    actionDesc: is-attachable-action-flashlight-grip-desc
     activatePopup: is-attachable-popup-activate
     deactivatePopup: is-attachable-popup-deactivate
     activateSound:
@@ -139,8 +139,8 @@
     state: bipod_a
     showActive: true
   - type: AttachableToggleable
-    actionName: Deploy bipod
-    actionDesc: Brace the weapon on its bipod. Moving folds it back up.
+    actionName: is-attachable-action-bipod-name
+    actionDesc: is-attachable-action-bipod-desc
     doAfter: 1.5
     wieldedOnly: true
     breakOnMove: true

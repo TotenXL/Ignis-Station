@@ -1,4 +1,4 @@
-﻿## Species Names
+## Species Names
 
 species-name-human = Human
 species-name-dwarf = Dwarf
@@ -12,6 +12,7 @@ species-name-vox = Vox
 species-name-gingerbread = delicious baked good
 species-name-vulpkanin = Vulpkanin
 species-name-felinid = Felinid
+species-name-horror = Shambling abomination
 
 ## Misc species things
 

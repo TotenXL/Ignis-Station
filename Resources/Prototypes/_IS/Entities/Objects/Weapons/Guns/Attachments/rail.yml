@@ -130,8 +130,8 @@
     state: flashlight_a
     showActive: true
   - type: AttachableToggleable
-    actionName: Toggle rail flashlight
-    actionDesc: Switch the weapon light on or off.
+    actionName: is-attachable-action-rail-flashlight-name
+    actionDesc: is-attachable-action-rail-flashlight-desc
     activatePopup: is-attachable-popup-activate
     deactivatePopup: is-attachable-popup-deactivate
     activateSound:
