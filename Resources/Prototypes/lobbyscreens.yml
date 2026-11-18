@@ -75,3 +75,9 @@
   background: /Textures/LobbyScreens/reclaimer-nuke.webp
   title: lobby-state-background-reclaimernuke-title
   artist: lobby-state-background-reclaimernuke-artist
+
+- type: lobbyBackground
+  id: Syndicate
+  background: /Textures/LobbyScreens/syndicate.webp
+  title: lobby-state-background-syndicate-title
+  artist: lobby-state-background-syndicate-artist
