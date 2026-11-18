@@ -47,8 +47,8 @@
     state: m54c-col_a
     showActive: true
   - type: AttachableToggleable
-    actionName: Extend collapsible stock
-    actionDesc: Extend or collapse the stock.
+    actionName: is-attachable-action-stock-collapsible-name
+    actionDesc: is-attachable-action-stock-collapsible-desc
     doAfter: 0.5
     activatePopup: is-attachable-popup-extend
     deactivatePopup: is-attachable-popup-collapse

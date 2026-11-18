@@ -1,21 +1,5 @@
 # Felinid vocal emotes
-- type: emote
-  id: Hiss
-  name: chat-emote-name-hiss
-  category: Vocal
-  available: false
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    tags:
-    - SiliconEmotes
-  chatMessages: ["chat-emote-msg-hiss"]
-  chatTriggers:
-  - hiss
-  - hisses
-  - hissing
-  - hissed
+# Hiss is defined upstream in Prototypes/Voice/speech_emotes.yml
 
 - type: emote
   id: Meow
